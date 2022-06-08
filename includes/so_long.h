@@ -6,7 +6,7 @@
 /*   By: dantremb <dantremb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 02:09:25 by dantremb          #+#    #+#             */
-/*   Updated: 2022/06/08 02:00:58 by dantremb         ###   ########.fr       */
+/*   Updated: 2022/06/08 14:55:39 by dantremb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,10 @@
 
 # include <unistd.h>
 # include <stdio.h>
-//# include "minilibx_opengl/mlx.h"
-# include "minilibx-linux/mlx.h"
-
+# include <stdlib.h>
+# include "libft/includes/libft.h"
+# include "minilibx_opengl/mlx.h"
+//# include "minilibx-linux/mlx.h"
 
 typedef struct s_data
 {
@@ -31,6 +32,7 @@ typedef struct s_data
 	void	*end;
 	int		x;
 	int		y;
+	char	*map;
 }				t_data;
 
 #endif
