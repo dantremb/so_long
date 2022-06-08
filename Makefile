@@ -6,7 +6,7 @@
 #    By: dantremb <dantremb@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/02 23:33:38 by root              #+#    #+#              #
-#    Updated: 2022/06/07 15:17:37 by dantremb         ###   ########.fr        #
+#    Updated: 2022/06/07 23:52:08 by dantremb         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,10 +18,10 @@ LIBFT_PATH = includes/libft/
 SRCS_PATH = srcs/
 SRCS = $(addprefix $(SRCS_PATH), $(SRCS_FILES))
 
-LIBXFLAG_linux = -lbsd -lXext -lX11
-MINILIBX_linux 	= includes/minilibx-linux/libmlx.a
-LIBXFLAG = -framework OpenGl -framework Cocoa
-MINILIBX 	= includes/minilibx_opengl/libmlx.a
+LIBXFLAG = -lbsd -lXext -lX11
+MINILIBX 	= includes/minilibx-linux/libmlx.a
+LIBXFLAG_MAC = -framework OpenGl -framework Cocoa
+MINILIBX_MAC 	= includes/minilibx_opengl/libmlx.a
 
 AR = ar
 CC = gcc

@@ -6,7 +6,7 @@
 /*   By: dantremb <dantremb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 02:09:25 by dantremb          #+#    #+#             */
-/*   Updated: 2022/06/07 19:50:34 by dantremb         ###   ########.fr       */
+/*   Updated: 2022/06/08 02:00:58 by dantremb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,22 @@
 
 # include <unistd.h>
 # include <stdio.h>
-# include "minilibx_opengl/mlx.h"
-//# include "minilibx-linux/mlx.h"
+//# include "minilibx_opengl/mlx.h"
+# include "minilibx-linux/mlx.h"
 
-typedef struct s_img
+
+typedef struct s_data
 {
-	void	*img;
+	void	*mlx;
+	void	*mlx_win;
+	void	*car;
+	void	*road;
+	void	*grass;
+	void	*item;
+	void	*start;
+	void	*end;
 	int		x;
 	int		y;
-}				t_img;
+}				t_data;
 
 #endif
