@@ -6,15 +6,19 @@
 #    By: dantremb <dantremb@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/02 23:33:38 by root              #+#    #+#              #
-#    Updated: 2022/06/08 10:06:09 by dantremb         ###   ########.fr        #
+#    Updated: 2022/06/09 11:59:07 by dantremb         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = so_long
 
-SRCS_FILES = so_long.c
 LIBFT = includes/libft/libft.a
 LIBFT_PATH = includes/libft/
+
+GNL = includes/get_next_line/get_next_line.a
+GNL_PATH = includes/get_next_line/
+
+SRCS_FILES = so_long.c
 SRCS_PATH = srcs/
 SRCS = $(addprefix $(SRCS_PATH), $(SRCS_FILES))
 
@@ -46,6 +50,8 @@ all: init $(NAME)
 init:
 	@echo "Preparing Libft"
 	@$(MAKE) -s -C $(LIBFT_PATH)
+	@echo "Preparing Get_next_line"
+	@$(MAKE) -s -C $(GNL_PATH)
 	@echo "Preparing $(NAME)"
 	@printf "Compiling -"
 
@@ -55,9 +61,11 @@ $(NAME): $(OBJS)
 clean:
 	@$(REMOVE) $(OBJS)
 	@@$(MAKE) -s clean -C $(LIBFT_PATH)
+	@@$(MAKE) -s clean -C $(GNL_PATH)
 fclean: clean
 	@$(REMOVE) $(NAME)
 	@$(MAKE) -s fclean -C $(LIBFT_PATH)
+	@$(MAKE) -s fclean -C $(GNL_PATH)
 
 re:	fclean all
 
@@ -65,4 +73,3 @@ git:
 	@git add .
 	@git commit -m "$(COMMIT)"
 	@git push
-	
