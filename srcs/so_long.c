@@ -6,7 +6,7 @@
 /*   By: dantremb <dantremb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 02:09:29 by dantremb          #+#    #+#             */
-/*   Updated: 2022/06/09 22:07:32 by dantremb         ###   ########.fr       */
+/*   Updated: 2022/06/09 22:24:18 by dantremb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ void	ft_forward(t_data *data)
 void	ft_exit_game(t_data *data)
 {
 	printf("Exit\n");
+	free(data->map);
 	mlx_destroy_image(data->mlx, data->player);
 	mlx_destroy_image(data->mlx, data->road);
 	mlx_destroy_image(data->mlx, data->grass);
@@ -41,7 +42,6 @@ void	ft_exit_game(t_data *data)
 	mlx_destroy_image(data->mlx, data->start);
 	mlx_destroy_image(data->mlx, data->end);
 	mlx_destroy_window(data->mlx, data->mlx_win);
-	(void)data;
 	exit (0);
 }
 
@@ -117,7 +117,7 @@ char	**ft_read_map(char *file, t_data *data)
 	i = 0;
 	while (1)
 	{
-		map[i++] = get_next_line(fdmap);
+		map[i++] = ft_get_next_line(fdmap);
 		if (map[i] == NULL)
 			break;
 	}
