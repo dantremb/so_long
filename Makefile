@@ -6,7 +6,7 @@
 #    By: dantremb <dantremb@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/02 23:33:38 by root              #+#    #+#              #
-#    Updated: 2022/06/09 11:59:07 by dantremb         ###   ########.fr        #
+#    Updated: 2022/06/09 21:00:52 by dantremb         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,10 +22,10 @@ SRCS_FILES = so_long.c
 SRCS_PATH = srcs/
 SRCS = $(addprefix $(SRCS_PATH), $(SRCS_FILES))
 
-LIBXFLAG_LINUX = -lbsd -lXext -lX11
-MINILIBX_LINUX 	= includes/minilibx-linux/libmlx.a
-LIBXFLAG = -framework OpenGl -framework Cocoa
-MINILIBX 	= includes/minilibx_opengl/libmlx.a
+LIBXFLAG = -lbsd -lXext -lX11
+MINILIBX 	= includes/minilibx-linux/libmlx.a
+LIBXFLAG_MAC = -framework OpenGl -framework Cocoa
+MINILIBX_MAC 	= includes/minilibx_opengl/libmlx.a
 
 AR = ar
 CC = gcc

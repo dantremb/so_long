@@ -6,7 +6,7 @@
 /*   By: dantremb <dantremb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 02:09:29 by dantremb          #+#    #+#             */
-/*   Updated: 2022/06/09 12:02:17 by dantremb         ###   ########.fr       */
+/*   Updated: 2022/06/09 21:23:30 by dantremb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,22 +40,24 @@ void	ft_exit_game(t_data *data)
 
 int	ft_game(int key, t_data *data)
 {
+	printf("key = %d\n", key);
 	(void) data;
-	if (key == 13)
+	if (key == 13 || key == 119)
 		ft_forward(data);
-	else if (key == 1)
+	else if (key == 1 || key == 115)
 		printf("Back\n");
-	else if (key == 2)
+	else if (key == 2 || key == 100)
 		printf("Right\n");
-	else if (key == 0)
+	else if (key == 0 || key == 97)
 		printf("Left\n");
-	else if (key == 53)
+	else if (key == 53 || key == 65307)
 		ft_exit_game(data);
 	return (0);
 }
 
 void	ft_init_xpm(t_data	*data)
 {
+	printf("ft_ini_xpm\n");
 	data->player = mlx_xpm_file_to_image(data->mlx,
 			"./bin/player64.xpm", &data->tile_size, &data->tile_size);
 	data->road = mlx_xpm_file_to_image(data->mlx,
@@ -72,6 +74,7 @@ void	ft_init_xpm(t_data	*data)
 
 void	ft_img_to_window(t_data	*data)
 {
+	printf("ft_img_to_window\n");
 	mlx_put_image_to_window(data->mlx, data->mlx_win, data->player, 0, 0);
 	mlx_put_image_to_window(data->mlx, data->mlx_win, data->road, 257, 0);
 	mlx_put_image_to_window(data->mlx, data->mlx_win, data->grass, 257, 257);
@@ -82,6 +85,7 @@ void	ft_img_to_window(t_data	*data)
 
 void	ft_validate_file(char *file, int count)
 {
+	printf("ft_validate_file\n");
 	if (count != 2)
 		ft_send_error("ft_validate_map: choose one map file with '.ber' extension");
 	else if (ft_strlen(file) < 5)
@@ -90,8 +94,9 @@ void	ft_validate_file(char *file, int count)
 		ft_send_error("ft_validate_map: bad map extension");
 }
 
-char	**ft_read_map(char file)
+/*char	**ft_read_map(char file)
 {
+	printf("ft_read_map\n");
 	int	fdmap;
 	
 	fdmap = open(file, O_RDONLY);
@@ -100,23 +105,24 @@ char	**ft_read_map(char file)
 
 void	ft_validate_map(t_data data, char *file)
 {
+	printf("ft_validate_map\n");
 	char	**temp;
 
 	temp = ft_read_map(file);
 	
-}
+}*/
 
 int	main(int count, char **file)
 {
 	t_data	data;
 
 	ft_validate_file(file[1], count);
-	ft_validate_map(&data, file[1]);
+	//ft_validate_map(&data, file[1]);
 	data.mlx = mlx_init();
 	data.mlx_win = mlx_new_window(data.mlx, 1280, 720, "Dantremb");
 	ft_init_xpm(&data);
 	ft_img_to_window(&data);
-	mlx_hook(data.mlx_win, 2, 0, ft_game, &data);
+	mlx_hook(data.mlx_win, 2, 1L << 0, ft_game, &data);
 	mlx_loop (data.mlx);
 	return (0);
 }
