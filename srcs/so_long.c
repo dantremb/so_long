@@ -6,7 +6,7 @@
 /*   By: dantremb <dantremb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 02:09:29 by dantremb          #+#    #+#             */
-/*   Updated: 2022/06/09 22:24:18 by dantremb         ###   ########.fr       */
+/*   Updated: 2022/06/09 22:27:15 by dantremb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -144,7 +144,7 @@ int	main(int count, char **file)
 	ft_validate_file(file[1], count);
 	ft_validate_map(&data, file[1]);
 	data.mlx = mlx_init();
-	data.mlx_win = mlx_new_window(data.mlx, 1280, 720, "Dantremb");
+	data.mlx_win = mlx_new_window(data.mlx, 1280, 720, "So_long");
 	ft_init_xpm(&data);
 	ft_img_to_window(&data);
 	mlx_hook(data.mlx_win, 2, 1L << 0, ft_keybind, &data);
