@@ -6,7 +6,7 @@
 /*   By: dantremb <dantremb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 02:09:29 by dantremb          #+#    #+#             */
-/*   Updated: 2022/06/09 21:23:30 by dantremb         ###   ########.fr       */
+/*   Updated: 2022/06/09 22:07:32 by dantremb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,13 @@
 
 void	ft_send_error(char *error)
 {
+	perror(error);
+	exit(1);
+}
+
+void	ft_free_and_send_error(char *error, t_data *data)
+{
+	free(data->map);
 	perror(error);
 	exit(1);
 }
@@ -38,7 +45,7 @@ void	ft_exit_game(t_data *data)
 	exit (0);
 }
 
-int	ft_game(int key, t_data *data)
+int	ft_keybind(int key, t_data *data)
 {
 	printf("key = %d\n", key);
 	(void) data;
@@ -94,35 +101,53 @@ void	ft_validate_file(char *file, int count)
 		ft_send_error("ft_validate_map: bad map extension");
 }
 
-/*char	**ft_read_map(char file)
+char	**ft_read_map(char *file, t_data *data)
 {
 	printf("ft_read_map\n");
-	int	fdmap;
+	int		fdmap;
+	char	**map;
+	int		i;
 	
 	fdmap = open(file, O_RDONLY);
-	
+	if (fdmap < 0)
+		ft_send_error("ft_read_map: file error");
+	map = ft_calloc(sizeof(char *), 16);
+	if (!map)
+		ft_send_error("ft_read_map: malloc error");
+	i = 0;
+	while (1)
+	{
+		map[i++] = get_next_line(fdmap);
+		if (map[i] == NULL)
+			break;
+	}
+	if (map[0] == NULL)
+		ft_free_and_send_error("ft_read_map: no data in map file", data);
+	return (map);
 }
 
-void	ft_validate_map(t_data data, char *file)
+void	ft_validate_map(t_data *data, char *file)
 {
 	printf("ft_validate_map\n");
 	char	**temp;
+	int		i;
 
-	temp = ft_read_map(file);
-	
-}*/
+	temp = ft_read_map(file, data);
+	while (temp[++i])
+		printf("%s\n", temp[i]);
+}
 
 int	main(int count, char **file)
 {
 	t_data	data;
 
 	ft_validate_file(file[1], count);
-	//ft_validate_map(&data, file[1]);
+	ft_validate_map(&data, file[1]);
 	data.mlx = mlx_init();
 	data.mlx_win = mlx_new_window(data.mlx, 1280, 720, "Dantremb");
 	ft_init_xpm(&data);
 	ft_img_to_window(&data);
-	mlx_hook(data.mlx_win, 2, 1L << 0, ft_game, &data);
+	mlx_hook(data.mlx_win, 2, 1L << 0, ft_keybind, &data);
 	mlx_loop (data.mlx);
 	return (0);
 }
