@@ -6,7 +6,7 @@
 /*   By: dantremb <dantremb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 02:09:25 by dantremb          #+#    #+#             */
-/*   Updated: 2022/06/09 22:10:48 by dantremb         ###   ########.fr       */
+/*   Updated: 2022/06/10 20:05:26 by dantremb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,10 @@
 # include <unistd.h>
 # include <stdio.h>
 # include <stdlib.h>
+# include <fcntl.h>
 # include "libft/includes/libft.h"
-# include "get_next_line/includes/get_next_line.h"
-//# include "minilibx_opengl/mlx.h"
-# include "minilibx-linux/mlx.h"
+# include "minilibx_opengl/mlx.h"
+//# include "minilibx-linux/mlx.h"
 
 typedef struct s_data
 {
@@ -27,14 +27,17 @@ typedef struct s_data
 	void	*mlx_win;
 	int		x_win;
 	int		y_win;
+	int		tile_size;
+	char	**map;
+	int		x_player;
+	int		y_player;
 	void	*player;
 	void	*road;
 	void	*grass;
 	void	*item;
-	void	*start;
 	void	*end;
-	int		tile_size;
-	char	*map;
 }				t_data;
+
+char	*ft_get_next_line(int fd);
 
 #endif
