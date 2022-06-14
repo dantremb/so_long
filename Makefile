@@ -6,7 +6,7 @@
 #    By: dantremb <dantremb@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/02 23:33:38 by root              #+#    #+#              #
-#    Updated: 2022/06/10 23:53:18 by dantremb         ###   ########.fr        #
+#    Updated: 2022/06/14 15:19:24 by dantremb         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ NAME = so_long
 LIBFT = includes/libft/libft.a
 LIBFT_PATH = includes/libft/
 
-SRCS_FILES = so_long.c get_next_line.c
+SRCS_FILES = so_long.c initialization.c movements.c get_next_line.c
 SRCS_PATH = srcs/
 SRCS = $(addprefix $(SRCS_PATH), $(SRCS_FILES))
 

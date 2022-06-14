@@ -6,7 +6,7 @@
 /*   By: dantremb <dantremb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 02:09:25 by dantremb          #+#    #+#             */
-/*   Updated: 2022/06/11 00:55:00 by dantremb         ###   ########.fr       */
+/*   Updated: 2022/06/14 15:31:52 by dantremb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,9 @@ typedef struct s_data
 	char	**map;
 	int		x_player;
 	int		y_player;
+	int		nb_items;
+	int		nb_end;
+	int		nb_start;
 	int		move;
 	void	*player;
 	void	*road;
@@ -40,5 +43,13 @@ typedef struct s_data
 }				t_data;
 
 char	*ft_get_next_line(int fd);
+int		ft_keybind(int key, t_data *data);
+void	ft_validate_map(t_data *data, char *file);
+void	ft_validate_file(t_data *data, char *file, int count);
+void	ft_img_to_window(t_data	*data);
+void	ft_init_xpm(t_data	*data);
+void	ft_exit_game(t_data *data);
+void	ft_free_and_send_error(char *error, t_data *data);
+void	ft_send_error(char *error);
 
 #endif
