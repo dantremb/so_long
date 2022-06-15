@@ -6,7 +6,7 @@
 /*   By: dantremb <dantremb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 15:07:49 by dantremb          #+#    #+#             */
-/*   Updated: 2022/06/14 15:15:59 by dantremb         ###   ########.fr       */
+/*   Updated: 2022/06/15 00:41:11 by dantremb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ void	ft_forward(t_data *data)
 }
 
 int	ft_keybind(int key, t_data *data)
-{
+{	
 	if (key == 13 || key == 119)
 		ft_forward(data);
 	else if (key == 1 || key == 115)

@@ -6,12 +6,11 @@
 /*   By: dantremb <dantremb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 02:09:29 by dantremb          #+#    #+#             */
-/*   Updated: 2022/06/14 15:35:40 by dantremb         ###   ########.fr       */
+/*   Updated: 2022/06/15 00:53:21 by dantremb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
-
 
 int	main(int count, char **file)
 {
@@ -25,6 +24,7 @@ int	main(int count, char **file)
 	ft_img_to_window(&data);
 	printf("items = %d start = %d, end = %d\n", data.nb_items, data.nb_start, data.nb_end);
 	mlx_hook(data.mlx_win, 2, 1L << 0, ft_keybind, &data);
+	mlx_hook(data.mlx_win, 17, 1L << 0, ft_exit_game, &data);
 	mlx_loop (data.mlx);
 	return (0);
 }
@@ -42,7 +42,7 @@ void	ft_free_and_send_error(char *error, t_data *data)
 	exit(1);
 }
 
-void	ft_exit_game(t_data *data)
+int	ft_exit_game(t_data *data)
 {
 	if (data->nb_items == 0)
 			printf("Victory in %d movements!\n", data->move);

@@ -6,7 +6,7 @@
 /*   By: dantremb <dantremb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 02:09:25 by dantremb          #+#    #+#             */
-/*   Updated: 2022/06/14 15:31:52 by dantremb         ###   ########.fr       */
+/*   Updated: 2022/06/15 00:56:16 by dantremb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	ft_validate_map(t_data *data, char *file);
 void	ft_validate_file(t_data *data, char *file, int count);
 void	ft_img_to_window(t_data	*data);
 void	ft_init_xpm(t_data	*data);
-void	ft_exit_game(t_data *data);
+int		ft_exit_game(t_data *data);
 void	ft_free_and_send_error(char *error, t_data *data);
 void	ft_send_error(char *error);
 

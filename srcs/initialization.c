@@ -6,7 +6,7 @@
 /*   By: dantremb <dantremb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 15:10:59 by dantremb          #+#    #+#             */
-/*   Updated: 2022/06/14 15:37:09 by dantremb         ###   ########.fr       */
+/*   Updated: 2022/06/15 00:48:16 by dantremb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,11 +77,11 @@ char	**ft_read_map(char *file, t_data *data)
 	fdmap = open(file, O_RDONLY);
 	if (fdmap < 0)
 		ft_send_error("ft_read_map: file error");
-	map = ft_calloc(sizeof(map), 16);
+	map = ft_calloc(sizeof(char *), 17);
 	if (!map)
 		ft_send_error("ft_read_map: malloc error");
 	i = 0;
-	while (1)
+	while (i <= 17)
 	{
 		map[i] = ft_get_next_line(fdmap);
 		if (map[i] == NULL)
@@ -89,6 +89,8 @@ char	**ft_read_map(char *file, t_data *data)
 		i++;
 	}
 	if (map[0] == NULL)
+		ft_free_and_send_error("ft_read_map: no data in map file", data);
+	else if (map[17] == NULL)
 		ft_free_and_send_error("ft_read_map: no data in map file", data);
 	return (map);
 }
