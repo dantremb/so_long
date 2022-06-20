@@ -6,7 +6,7 @@
 /*   By: dantremb <dantremb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 02:09:25 by dantremb          #+#    #+#             */
-/*   Updated: 2022/06/15 00:56:16 by dantremb         ###   ########.fr       */
+/*   Updated: 2022/06/19 20:42:16 by dantremb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,10 @@ typedef struct s_data
 	int		nb_end;
 	int		nb_start;
 	int		move;
-	void	*player;
+	void	*player_down;
+	void	*player_top;
+	void	*player_right;
+	void	*player_left;
 	void	*road;
 	void	*grass;
 	void	*item;

@@ -6,12 +6,11 @@
 /*   By: dantremb <dantremb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 15:07:49 by dantremb          #+#    #+#             */
-/*   Updated: 2022/06/15 00:41:11 by dantremb         ###   ########.fr       */
+/*   Updated: 2022/06/19 23:04:49 by dantremb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
-
 
 void	ft_right(t_data *data)
 {
@@ -20,13 +19,16 @@ void	ft_right(t_data *data)
 		if (data->nb_items == 0)
 			ft_exit_game(data);
 	}
-	else if (ft_strchr("C0P", data->map[data->y_player][(data->x_player) + 1]) != 0)
+	else if (ft_strchr("C0P",
+			data->map[data->y_player][(data->x_player) + 1]) != 0)
 	{	
 		if (data->map[data->y_player][(data->x_player) + 1] == 'C')
 			data->nb_items -= 1;
 		data->map[data->y_player][data->x_player] = '0';
-		mlx_put_image_to_window(data->mlx, data->mlx_win, data->road, data->x_player++ * 64, data->y_player * 64);
-		mlx_put_image_to_window(data->mlx, data->mlx_win, data->player, data->x_player * 64, data->y_player * 64);
+		mlx_put_image_to_window(data->mlx, data->mlx_win,
+			data->road, data->x_player++ *64, data->y_player * 64);
+		mlx_put_image_to_window(data->mlx, data->mlx_win,
+			data->player_right, data->x_player * 64, data->y_player * 64);
 		data->move += 1;
 		printf("Nbs of moves =  %d\n", data->move);
 	}
@@ -39,13 +41,16 @@ void	ft_left(t_data *data)
 		if (data->nb_items == 0)
 			ft_exit_game(data);
 	}
-	else if (ft_strchr("C0P", data->map[data->y_player][(data->x_player) - 1]) != 0)
+	else if (ft_strchr("C0P",
+			data->map[data->y_player][(data->x_player) - 1]) != 0)
 	{	
 		if (data->map[data->y_player][(data->x_player) - 1] == 'C')
 			data->nb_items -= 1;
 		data->map[data->y_player][data->x_player] = '0';
-		mlx_put_image_to_window(data->mlx, data->mlx_win, data->road, data->x_player-- * 64, data->y_player * 64);
-		mlx_put_image_to_window(data->mlx, data->mlx_win, data->player, data->x_player * 64, data->y_player * 64);
+		mlx_put_image_to_window(data->mlx, data->mlx_win,
+			data->road, data->x_player-- *64, data->y_player * 64);
+		mlx_put_image_to_window(data->mlx, data->mlx_win,
+			data->player_left, data->x_player * 64, data->y_player * 64);
 		data->move += 1;
 		printf("Nbs of moves =  %d\n", data->move);
 	}
@@ -58,13 +63,16 @@ void	ft_backward(t_data *data)
 		if (data->nb_items == 0)
 			ft_exit_game(data);
 	}
-	else if (ft_strchr("C0P", data->map[(data->y_player) + 1][data->x_player]) != 0)
+	else if (ft_strchr("C0P",
+			data->map[(data->y_player) + 1][data->x_player]) != 0)
 	{	
 		if (data->map[(data->y_player) + 1][data->x_player] == 'C')
 			data->nb_items -= 1;
 		data->map[data->y_player][data->x_player] = '0';
-		mlx_put_image_to_window(data->mlx, data->mlx_win, data->road, data->x_player * 64, data->y_player++ * 64);
-		mlx_put_image_to_window(data->mlx, data->mlx_win, data->player, data->x_player * 64, data->y_player * 64);
+		mlx_put_image_to_window(data->mlx, data->mlx_win,
+			data->road, data->x_player * 64, data->y_player++ *64);
+		mlx_put_image_to_window(data->mlx, data->mlx_win,
+			data->player_down, data->x_player * 64, data->y_player * 64);
 		data->move += 1;
 		printf("Nbs of moves =  %d\n", data->move);
 	}
@@ -77,13 +85,16 @@ void	ft_forward(t_data *data)
 		if (data->nb_items == 0)
 			ft_exit_game(data);
 	}
-	else if (ft_strchr("C0P", data->map[(data->y_player) - 1][data->x_player]) != 0)
+	else if (ft_strchr("C0P",
+			data->map[(data->y_player) - 1][data->x_player]) != 0)
 	{	
 		if (data->map[(data->y_player) - 1][data->x_player] == 'C')
 			data->nb_items -= 1;
 		data->map[data->y_player][data->x_player] = '0';
-		mlx_put_image_to_window(data->mlx, data->mlx_win, data->road, data->x_player * 64, data->y_player-- * 64);
-		mlx_put_image_to_window(data->mlx, data->mlx_win, data->player, data->x_player * 64, data->y_player * 64);
+		mlx_put_image_to_window(data->mlx, data->mlx_win,
+			data->road, data->x_player * 64, data->y_player-- *64);
+		mlx_put_image_to_window(data->mlx, data->mlx_win,
+			data->player_top, data->x_player * 64, data->y_player * 64);
 		data->move += 1;
 		printf("Nbs of moves =  %d\n", data->move);
 	}

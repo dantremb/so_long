@@ -6,7 +6,7 @@
 /*   By: dantremb <dantremb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 02:09:29 by dantremb          #+#    #+#             */
-/*   Updated: 2022/06/15 00:53:21 by dantremb         ###   ########.fr       */
+/*   Updated: 2022/06/19 23:14:31 by dantremb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,23 @@ int	main(int count, char **file)
 	data.mlx_win = mlx_new_window(data.mlx, data.x_win, data.y_win, "So_long");
 	ft_init_xpm(&data);
 	ft_img_to_window(&data);
-	printf("items = %d start = %d, end = %d\n", data.nb_items, data.nb_start, data.nb_end);
 	mlx_hook(data.mlx_win, 2, 1L << 0, ft_keybind, &data);
 	mlx_hook(data.mlx_win, 17, 1L << 0, ft_exit_game, &data);
 	mlx_loop (data.mlx);
 	return (0);
+}
+
+void	ft_validate_file(t_data *data, char *file, int count)
+{
+	if (count != 2)
+		ft_send_error("ft_validate_map: need '.ber' maps");
+	else if (ft_strlen(file) < 5)
+		ft_send_error("ft_validate_map: bad map name");
+	else if (ft_strncmp((file + (ft_strlen(file) - 4)), ".ber", 4) != 0)
+		ft_send_error("ft_validate_map: bad map extension");
+	data->nb_items = 0;
+	data->nb_end = 0;
+	data->nb_start = 0;
 }
 
 void	ft_send_error(char *error)
@@ -37,6 +49,11 @@ void	ft_send_error(char *error)
 
 void	ft_free_and_send_error(char *error, t_data *data)
 {
+	int	i;
+
+	i = -1;
+	while (++i <= data->y_win / 64 - 1)
+		free(data->map[i]);
 	free(data->map);
 	perror(error);
 	exit(1);
@@ -44,12 +61,20 @@ void	ft_free_and_send_error(char *error, t_data *data)
 
 int	ft_exit_game(t_data *data)
 {
+	int	i;
+
 	if (data->nb_items == 0)
-			printf("Victory in %d movements!\n", data->move);
+		printf("Victory in %d movements!\n", data->move);
 	else
-			printf("Failed after %d movements!\n", data->move);
+		printf("Failed after %d movements!\n", data->move);
+	i = -1;
+	while (++i <= data->y_win / 64 - 1)
+		free(data->map[i]);
 	free(data->map);
-	mlx_destroy_image(data->mlx, data->player);
+	mlx_destroy_image(data->mlx, data->player_down);
+	mlx_destroy_image(data->mlx, data->player_top);
+	mlx_destroy_image(data->mlx, data->player_right);
+	mlx_destroy_image(data->mlx, data->player_left);
 	mlx_destroy_image(data->mlx, data->road);
 	mlx_destroy_image(data->mlx, data->grass);
 	mlx_destroy_image(data->mlx, data->item);
