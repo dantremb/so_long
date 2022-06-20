@@ -6,7 +6,7 @@
 /*   By: dantremb <dantremb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 02:09:25 by dantremb          #+#    #+#             */
-/*   Updated: 2022/06/19 20:42:16 by dantremb         ###   ########.fr       */
+/*   Updated: 2022/06/20 10:40:07 by dantremb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@
 # include <stdlib.h>
 # include <fcntl.h>
 # include "libft/includes/libft.h"
-//# include "minilibx_opengl/mlx.h"
-# include "minilibx-linux/mlx.h"
+# include "minilibx_opengl/mlx.h"
+//# include "minilibx-linux/mlx.h"
 
 typedef struct s_data
 {

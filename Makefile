@@ -6,7 +6,7 @@
 #    By: dantremb <dantremb@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/02 23:33:38 by root              #+#    #+#              #
-#    Updated: 2022/06/19 23:44:32 by dantremb         ###   ########.fr        #
+#    Updated: 2022/06/20 11:02:16 by dantremb         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,12 +19,13 @@ SRCS_FILES = so_long.c initialization.c movements.c get_next_line.c validation.c
 SRCS_PATH = srcs/
 SRCS = $(addprefix $(SRCS_PATH), $(SRCS_FILES))
 
-LIBXFLAG= -lbsd -lXext -lX11
-MINILIBX	= includes/minilibx-linux/libmlx.a
-MINILIBX_PATH	= includes/minilibx-linux/
-LIBXFLAG_MAC = -framework OpenGl -framework Cocoa
-MINILIBX_MAC 	= includes/minilibx_opengl/libmlx.a
-MINILIBX_PATH_MAC 	= includes/minilibx_opengl/
+LIBXFLAG_LINUX = -lbsd -lXext -lX11
+MINILIBX_LINUX = includes/minilibx-linux/libmlx.a
+MINILIBX_PATH_				LINUX = includes/minilibx-linux/
+
+LIBXFLAG = -framework OpenGl -framework Cocoa
+MINILIBX = includes/minilibx_opengl/libmlx.a
+MINILIBX_PATH = includes/minilibx_opengl/
 
 AR = ar
 CC = gcc
@@ -74,23 +75,23 @@ git:
 	@git push
 
 test1:
-	./so_long maps/1_complete.ber
+	./so_long maps/01_complete.ber
 test2:
-	./so_long maps/2_no_extension
+	./so_long maps/02_no_extension
 test3:
-	./so_long maps/3_empty.ber
+	./so_long maps/03_empty.ber
 test4:
-	./so_long maps/4_left_missing.ber
+	./so_long maps/04_left_missing.ber
 test5:
-	./so_long maps/5_down_missing.ber
+	./so_long maps/05_down_missing.ber
 test6:
-	./so_long maps/6_top_missing.ber
+	./so_long maps/06_top_missing.ber
 test7:
-	./so_long maps/7_right_missing.ber
+	./so_long maps/07_right_missing.ber
 test8:	
-	./so_long maps/8_end_missing.ber
+	./so_long maps/08_end_missing.ber
 test9:
-	./so_long maps/9_items_missing.ber
+	./so_long maps/09_items_missing.ber
 test10:
 	./so_long maps/10_start_missing.ber
 test11:

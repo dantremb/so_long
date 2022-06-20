@@ -6,7 +6,7 @@
 /*   By: dantremb <dantremb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 02:09:29 by dantremb          #+#    #+#             */
-/*   Updated: 2022/06/19 23:14:31 by dantremb         ###   ########.fr       */
+/*   Updated: 2022/06/20 11:11:38 by dantremb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +31,11 @@ int	main(int count, char **file)
 void	ft_validate_file(t_data *data, char *file, int count)
 {
 	if (count != 2)
-		ft_send_error("ft_validate_map: need '.ber' maps");
+		ft_send_error("ft_validate_file: need '.ber' maps");
 	else if (ft_strlen(file) < 5)
-		ft_send_error("ft_validate_map: bad map name");
+		ft_send_error("ft_validate_file: bad map name");
 	else if (ft_strncmp((file + (ft_strlen(file) - 4)), ".ber", 4) != 0)
-		ft_send_error("ft_validate_map: bad map extension");
+		ft_send_error("ft_validate_file: bad map extension");
 	data->nb_items = 0;
 	data->nb_end = 0;
 	data->nb_start = 0;
