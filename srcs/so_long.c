@@ -6,7 +6,7 @@
 /*   By: dantremb <dantremb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 02:09:29 by dantremb          #+#    #+#             */
-/*   Updated: 2022/06/20 11:11:38 by dantremb         ###   ########.fr       */
+/*   Updated: 2022/06/28 13:17:18 by dantremb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,8 +52,8 @@ void	ft_free_and_send_error(char *error, t_data *data)
 	int	i;
 
 	i = -1;
-	while (++i <= data->y_win / 64 - 1)
-		free(data->map[i]);
+	while (data->map[++i])
+		free(data->map[i]); 
 	free(data->map);
 	perror(error);
 	exit(1);

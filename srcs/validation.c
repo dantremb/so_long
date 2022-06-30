@@ -6,7 +6,7 @@
 /*   By: dantremb <dantremb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/19 20:40:16 by dantremb          #+#    #+#             */
-/*   Updated: 2022/06/19 23:15:00 by dantremb         ###   ########.fr       */
+/*   Updated: 2022/06/28 12:54:06 by dantremb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,9 +97,9 @@ void	ft_validate_map(t_data *data, char *file)
 		}
 	}
 	x++;
-	if (tile != x * y)
-		ft_free_and_send_error("map_integrity: Wrong tiles config", data);
 	data->x_win = x * 64;
 	data->y_win = y * 64;
+	if (tile != x * y)
+		ft_free_and_send_error("map_integrity: Wrong tiles config", data);
 	ft_validate_map_integrity(data);
 }
