@@ -19,13 +19,13 @@ SRCS_FILES = so_long.c initialization.c movements.c get_next_line.c validation.c
 SRCS_PATH = srcs/
 SRCS = $(addprefix $(SRCS_PATH), $(SRCS_FILES))
 
-LIBXFLAG_LINUX = -lbsd -lXext -lX11
-MINILIBX_LINUX = includes/minilibx-linux/libmlx.a
-MINILIBX_PATH_				LINUX = includes/minilibx-linux/
+LIBXFLAG = -lbsd -lXext -lX11
+MINILIBX = includes/minilibx-linux/libmlx.a
+MINILIBX_PATH = includes/minilibx-linux/
 
-LIBXFLAG = -framework OpenGl -framework Cocoa
-MINILIBX = includes/minilibx_opengl/libmlx.a
-MINILIBX_PATH = includes/minilibx_opengl/
+LIBXFLAG_MAC = -framework OpenGl -framework Cocoa
+MINILIBX_MAC = includes/minilibx_opengl/libmlx.a
+MINILIBX_PATH_MAC = includes/minilibx_opengl/
 
 AR = ar
 CC = gcc

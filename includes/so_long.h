@@ -18,8 +18,8 @@
 # include <stdlib.h>
 # include <fcntl.h>
 # include "libft/includes/libft.h"
-# include "minilibx_opengl/mlx.h"
-//# include "minilibx-linux/mlx.h"
+//# include "minilibx_opengl/mlx.h"
+# include "minilibx-linux/mlx.h"
 
 typedef struct s_data
 {
