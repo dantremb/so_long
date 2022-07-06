@@ -14,8 +14,8 @@
 
 int	main(int count, char **file)
 {
+	printf("test\n");
 	t_data	data;
-
 	ft_validate_file(&data, file[1], count);
 	ft_validate_map(&data, file[1]);
 	data.mlx = mlx_init();

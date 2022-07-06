@@ -10,14 +10,18 @@
 #                                                                              #
 # **************************************************************************** #
 
+# Nom du Projet
 NAME = so_long
 
+# Flags
+AR = ar
+CC = gcc
+ARFLAGS = rcs
+CFLAGS = -Wall -Wextra -Werror -g
+
+# Includes
 LIBFT = includes/libft/libft.a
 LIBFT_PATH = includes/libft/
-
-SRCS_FILES = so_long.c initialization.c movements.c get_next_line.c validation.c
-SRCS_PATH = srcs/
-SRCS = $(addprefix $(SRCS_PATH), $(SRCS_FILES))
 
 LIBXFLAG = -lbsd -lXext -lX11
 MINILIBX = includes/minilibx-linux/libmlx.a
@@ -27,52 +31,68 @@ LIBXFLAG_MAC = -framework OpenGl -framework Cocoa
 MINILIBX_MAC = includes/minilibx_opengl/libmlx.a
 MINILIBX_PATH_MAC = includes/minilibx_opengl/
 
-AR = ar
-CC = gcc
+# Sources files
+S = srcs/
+SRCS_FILES = so_long.c \
+			initialization.c \
+			movements.c \
+			get_next_line.c \
+			validation.c 
+SRCS = $(addprefix $S, $(SRCS_FILES))
 
+# Objects conversion
+O = objs/
+OBJS= $(SRCS:$S%=$O%.o)
+$O%.o: $S%
+	@printf "$R■$W"
+	@$(CC) $(CFLAGS) -c $< -o $@
 
-ARFLAGS = rcs
-CFLAGS = -Wall -Wextra -Werror -g
+# Main rule
+all: signature init $(NAME)
+	@echo "$G\n$(NAME) Compiled!$W"
 
-
-REMOVE = rm -rf
-COMMIT = $(shell date "+%d %B %T")
-
-OBJS= $(SRCS:%.c=%.o)
-%.o: %.c
-	@printf "-"
-	@$(CC) $(CFLAGS) -o $@ -c $<
-
-all: init $(NAME)
-	@echo "> Done!."
-	@echo "$(NAME) Compiled!"
-
+# Initialise librairies and making objs folder
 init:
-	@echo "Preparing Minilibx"
+	@mkdir -p $O
+	@echo "$GLibrary's initialization$W"
+	@echo "Creating Minilibx"
 	@$(MAKE) -s -C $(MINILIBX_PATH)
-	@echo "Preparing Libft"
 	@$(MAKE) -s -C $(LIBFT_PATH)
-	@echo "Preparing $(NAME)"
-	@printf "Compiling -"
+	@printf "$CCreating $(NAME)\n$W"
 
+# Creating  executable
 $(NAME): $(OBJS)
 	@$(CC) -o $@ $^ $(LIBFT) $(MINILIBX) $(CFLAGS) $(LIBXFLAG)
 
+# Cleaning
+REMOVE = rm -rf
+
 clean:
-	@$(REMOVE) $(OBJS)
+	@$(REMOVE) $O
 	@$(MAKE) -s clean -C $(LIBFT_PATH)
-	@$(MAKE) -s clean -C $(MINILIBX_PATH)
+
 fclean: clean
 	@$(REMOVE) $(NAME)
 	@$(MAKE) -s fclean -C $(LIBFT_PATH)
-	@$(MAKE) -s clean -C $(MINILIBX_PATH)
 
 re:	fclean all
 
+# Utilities
+COMMIT = $(shell date "+%d %B %T")
 git:
 	@git add .
 	@git commit -m "$(COMMIT)"
 	@git push
+
+R = $(shell tput -Txterm setaf 1)
+G = $(shell tput -Txterm setaf 2)
+C = $(shell tput -Txterm setaf 6)
+W = $(shell tput -Txterm setaf 7)
+
+signature:
+	@echo "\n$G+---+---+---+---+---+---+---+---+"
+	@echo "$G|$C	$(NAME) by Dantremb	$G|"
+	@echo "$G+---+---+---+---+---+---+---+---+"
 
 test1:
 	./so_long maps/01_complete.ber
@@ -98,3 +118,4 @@ test11:
 	./so_long maps/11_too_big_map.ber
 test12:	
 	./so_long maps/12_map_not_rectangle.ber
+	
